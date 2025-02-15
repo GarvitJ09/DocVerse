@@ -1,0 +1,63 @@
+.security-privacy-section {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .security-privacy-section h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .security-setting,
+  .privacy-policy,
+  .terms-of-service {
+    margin-bottom: 30px;
+  }
+  
+  .security-setting h3,
+  .privacy-policy h3,
+  .terms-of-service h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #007bff;
+  }
+  
+  .security-setting p,
+  .privacy-policy p,
+  .terms-of-service p {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 10px;
+  }
+  
+  .toggle-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .toggle-button:hover {
+    background-color: #005bb5;
+  }
+  
+  .privacy-policy a,
+  .terms-of-service a {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 14px;
+  }
+  
+  .privacy-policy a:hover,
+  .terms-of-service a:hover {
+    text-decoration: underline;
+  }

@@ -1,0 +1,199 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px; 
+    background-color: var(--white-color);
+    border-radius: 12px;
+    box-shadow: 0 4px 8px var(--box-shadow-color);
+    overflow: hidden;
+  }
+  
+  .file-upload-container {
+    width: 40%;
+    padding: 20px;
+    border-right: 1px solid var(--secondary-color);
+    background-color: #fafafa;
+  }
+  
+  .chat-container {
+    width: 50%;
+    padding: 20px;
+    background-color: var(--white-color);
+  }
+  
+  /* Dropzone Styling */
+  .dropzone {
+    border: 2px dashed var(--primary-color);
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    margin-bottom: 20px;
+    background-color: var(--dropzone-bg-color);
+    transition: background-color 0.3s ease;
+  }
+  
+  .dropzone:hover {
+    background-color: var(--dropzone-hover-bg-color);
+  }
+  
+  .dropzone p {
+    margin: 0;
+    color: var(--primary-color);
+    font-size: 16px;
+  }
+  
+  /* Uploaded Files Styling */
+  .uploaded-files {
+    margin-top: 20px;
+  }
+  
+  .uploaded-files h3 {
+    margin-bottom: 10px;
+    color: var(--text-color);
+    font-size: 18px;
+  }
+  
+  .uploaded-files ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .uploaded-files li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid var(--secondary-color);
+    border-radius: 6px;
+    margin-bottom: 10px;
+    background-color: var(--white-color);
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .uploaded-files li:hover {
+    box-shadow: 0 2px 4px var(--box-shadow-color);
+  }
+  
+  .uploaded-files button {
+    background-color: #ff4d4d;
+    color: var(--white-color);
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .uploaded-files button:hover {
+    background-color: #ff1a1a;
+  }
+  
+  /* Chat Interface Styling */
+  .chat-interface {
+    border: 1px solid var(--secondary-color);
+    border-radius: 12px;
+    padding: 10px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--white-color);
+    box-shadow: 0 4px 8px var(--box-shadow-color);
+  }
+  
+  .messages-container {
+    flex: 1;
+    overflow-y: auto;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-bottom: 1px solid var(--secondary-color);
+    background-color: var(--message-bg-color);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Message Styling */
+  .message {
+    max-width: 70%;
+    margin: 5px 0;
+    padding: 10px 15px;
+    border-radius: 12px;
+    word-wrap: break-word;
+    box-shadow: 0 2px 4px var(--box-shadow-color);
+  }
+  
+  .user-message {
+    align-self: flex-end;
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    border-radius: 12px 12px 0 12px;
+  }
+  
+  .bot-message {
+    align-self: flex-start;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    border-radius: 12px 12px 12px 0;
+  }
+  
+  /* Sender and Time Styling */
+  .message-sender {
+    font-weight: bold;
+    font-size: 12px;
+    /* color: var(--gray-color); */
+    margin-bottom: 4px;
+  }
+  
+  .message-text {
+    font-size: 14px;
+    line-height: 1.4;
+    align: left;
+  }
+  
+  .message-time {
+    font-size: 10px;
+    /* color: var(--light-gray-color); */
+    margin-top: 4px;
+    text-align: right;
+  }
+  
+  /* Input Container Styling */
+  .input-container {
+    display: flex;
+    padding: 10px;
+    background-color: var(--message-bg-color);
+    border-radius: 8px;
+  }
+  
+  .input-container input {
+    flex: 1;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid var(--secondary-color);
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s ease;
+  }
+  
+  .input-container input:focus {
+    border-color: var(--primary-color);
+  }
+  
+  .input-container button {
+    margin-left: 10px;
+    padding: 10px 20px;
+    border-radius: 6px;
+    border: none;
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .input-container button:hover {
+    background-color: var(--primary-hover-color);
+  }
+  
+   
