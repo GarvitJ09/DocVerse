@@ -17,7 +17,7 @@ const FileUpload = ({ onFileUpload }) => {
   return (
     <div {...getRootProps()} className='dropzone'>
       <input {...getInputProps()} />
-      <p>Drag & drop some files here, or click to select files</p>
+      <p>Drag & drop files here, or click to select files</p>
     </div>
   );
 };

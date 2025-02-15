@@ -8,10 +8,12 @@ import TestimonialsSection from './components/TestimonialsSection ';
 import UseSection from './components/UseSection';
 import AboutUsSection from './components/AboutUsSection ';
 import './styles/Styles.css';
+import Header from './components/Header';
 
 const App = () => {
   return (
     <div className='App'>
+      <Header />
       <HeroSection />
       <HowItWorksSection />
       <HowToUse />

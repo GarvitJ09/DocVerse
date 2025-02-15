@@ -5,7 +5,6 @@ import '../styles/Styles.css';
 const AboutUsSection = () => {
   return (
     <section className='about-us-section'>
-      <h2>About Us</h2>
       <p>
         We are a team of AI and document management experts dedicated to making
         your life easier. Our mission is to provide a seamless way to interact

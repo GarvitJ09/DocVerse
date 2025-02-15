@@ -36,12 +36,12 @@ const Footer = () => {
         </div>
         <div className='footer-section'>
           <h3>Contact Us</h3>
-          <p>Email: support@yourwebsite.com</p>
-          <p>Phone: +1 (123) 456-7890</p>
+          <p>Email: docverse@gmail.com</p>
+          {/* <p>Phone: +1 (123) 456-7890</p> */}
         </div>
       </div>
       <div className='footer-bottom'>
-        <p>&copy; 2023 Your Website. All rights reserved.</p>
+        <p>&copy; 2025 DocVerse. All rights reserved.</p>
       </div>
     </footer>
   );

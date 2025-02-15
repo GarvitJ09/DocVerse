@@ -1,9 +1,8 @@
-import { React, useState } from 'react';
+import React, { useState } from 'react';
 import FileUpload from './FileUpload';
 import ChatInterface from './ChatInterface';
 import axios from 'axios';
 import '../styles/UseSection.css';
-import '../styles/Styles.css';
 
 const UseSection = () => {
   const [uploadedFiles, setUploadedFiles] = useState([]);
@@ -23,10 +22,10 @@ const UseSection = () => {
     // Add user message to chat
     setChatMessages((prevMessages) => [
       ...prevMessages,
-      { sender: 'user', text: message },
+      { sender: 'user', text: message, time: new Date() },
     ]);
 
-    // Send message to backend (you need to implement this)
+    // Send message to backend
     try {
       const response = await axios.post('/api/chat', {
         message,
@@ -36,12 +35,13 @@ const UseSection = () => {
       // Add bot response to chat
       setChatMessages((prevMessages) => [
         ...prevMessages,
-        { sender: 'bot', text: response.data.reply },
+        { sender: 'bot', text: response.data.reply, time: new Date() },
       ]);
     } catch (error) {
       console.error('Error sending message:', error);
     }
   };
+
   return (
     <div className='container'>
       <div className='file-upload-container'>

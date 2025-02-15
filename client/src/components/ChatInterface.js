@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import '../styles/Styles.css';
 
 const ChatInterface = ({ messages, onSendMessage }) => {
   const [inputMessage, setInputMessage] = useState('');
@@ -25,9 +24,7 @@ const ChatInterface = ({ messages, onSendMessage }) => {
               {msg.sender === 'user' ? 'You' : 'Bot'}
             </div>
             <div className='message-text'>{msg.text}</div>
-            <div className='message-time'>
-              {new Date().toLocaleTimeString()}
-            </div>
+            <div className='message-time'>{msg.time.toLocaleTimeString()}</div>
           </div>
         ))}
       </div>

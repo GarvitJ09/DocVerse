@@ -26,7 +26,6 @@ const FeaturesSection = () => {
 
   return (
     <section className='features-section'>
-      <h2>Features</h2>
       <div className='features-grid'>
         {features.map((feature, index) => (
           <div key={index} className='feature-card'>

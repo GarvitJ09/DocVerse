@@ -24,7 +24,6 @@ const HowItWorksSection = () => {
 
   return (
     <section className='how-it-works-section'>
-      <h2>How It Works</h2>
       <div className='steps-grid'>
         {steps.map((step, index) => (
           <div key={index} className='step-card'>

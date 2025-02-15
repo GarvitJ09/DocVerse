@@ -5,7 +5,6 @@ import '../styles/Styles.css';
 const HeroSection = () => {
   return (
     <section className='hero'>
-      <h1 className='title'>DocVerse</h1>
       <div className='hero-container'>
         <h1 className='hero-title'>Talk to your Documents</h1>
         <p className='hero-subtitle'>
