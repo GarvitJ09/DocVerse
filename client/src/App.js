@@ -9,6 +9,7 @@ import UseSection from './components/UseSection';
 import AboutUsSection from './components/AboutUsSection ';
 import './styles/Styles.css';
 import Header from './components/Header';
+import UseCaseSection from './components/UseCaseSection';
 
 const App = () => {
   return (
@@ -19,8 +20,9 @@ const App = () => {
       <HowToUse />
       <UseSection />
       <FeaturesSection />
-      <TestimonialsSection />
-      <AboutUsSection />
+      <UseCaseSection />
+      {/* <TestimonialsSection />
+      <AboutUsSection /> */}
       <Footer />
     </div>
   );

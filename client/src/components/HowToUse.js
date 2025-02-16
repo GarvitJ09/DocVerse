@@ -5,7 +5,7 @@ import '../styles/Styles.css';
 
 const HowToUse = () => {
   return (
-    <div className='howtouse'>
+    <div className='howtouse' id='howtousesection'>
       <div className='video-player'>
         <video width='600' autoPlay loop muted>
           <source src={LT} type='video/mp4' />

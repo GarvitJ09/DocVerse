@@ -1,6 +1,7 @@
 import React from 'react';
 import '../styles/TestimonialsSection.css';
 import '../styles/Styles.css';
+import image from '../Assets/image.jpeg';
 
 const TestimonialsSection = () => {
   const testimonials = [
@@ -9,13 +10,13 @@ const TestimonialsSection = () => {
       role: 'CEO, Company XYZ',
       quote:
         'This platform has revolutionized how we handle documents. Highly recommended!',
-      image: 'https://via.placeholder.com/100',
+      image: image,
     },
     {
       name: 'Jane Smith',
       role: 'Marketing Manager',
       quote: 'The AI is incredibly accurate and saves us so much time.',
-      image: 'https://via.placeholder.com/100',
+      image: image,
     },
   ];
 

@@ -43,7 +43,7 @@ const UseSection = () => {
   };
 
   return (
-    <div className='container'>
+    <div className='container' id='use-section'>
       <div className='file-upload-container'>
         <FileUpload onFileUpload={handleFileUpload} />
         <div className='uploaded-files'>

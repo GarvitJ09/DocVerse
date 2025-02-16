@@ -1,3 +1,14 @@
-.howtouse{ 
-    padding: 30px; 
-}
+/* How To Use Section Styles */
+.howtouse {
+    padding: 30px;
+    background-color: var(--background-color);
+  }
+  
+  .video-player {
+    text-align: center;
+  }
+  
+  .video-player video {
+    max-width: 100%;
+    border-radius: 10px;
+  }

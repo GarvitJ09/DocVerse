@@ -1,0 +1,57 @@
+/* Use Case Section Styles */
+.use-case-section {
+  padding: 4rem 2rem;
+  background-color: var(--white);
+  text-align: center;
+}
+
+.use-case-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+}
+
+.use-case-section .subtitle {
+  font-size: 1.2rem;
+  color: var(--gray-color);
+  margin-bottom: 2rem;
+}
+
+.use-cases-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.use-case-card {
+  flex: 1 1 30%;
+  padding: 2rem;
+  background-color: var(--background-color);
+  border-radius: 12px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.use-case-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 4px 8px var(--box-shadow-color);
+}
+
+.use-case-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.use-case-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+}
+
+.use-case-card p {
+  font-size: 1rem;
+  color: var(--gray-color);
+  line-height: 1.6;
+}

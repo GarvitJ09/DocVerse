@@ -14,8 +14,18 @@ const HeroSection = () => {
           Get insights, summaries, and answers instantly.
         </p>
         <div className='hero-buttons'>
-          <button className='btn primary-btn'>Get started for free</button>
-          <button className='btn secondary-btn'>How to use →</button>
+          <button
+            className='btn primary-btn'
+            onClick={() => window.location.replace('/#use-section')}
+          >
+            Get started for free →
+          </button>
+          <button
+            className='btn secondary-btn'
+            onClick={() => window.location.replace('/#howtousesection')}
+          >
+            How to use
+          </button>
         </div>
         {/* <div className='hero-footer'>
           <div className='avatar-group'>

@@ -1,49 +1,55 @@
-/* AboutUsSection.css */
+/* About Us Section Styles */
 .about-us-section {
-    padding: 4rem 0;
-    background-color: var(--background-color);
-    text-align: center;
-  }
-  
-  .about-us-section p {
-    max-width: 800px;
-    margin: 0 auto 2rem;
-    font-size: 1.1rem;
-    color: #666;
-  }
-  
-  .team-grid {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    flex-wrap: wrap;
-  }
-  
-  .team-member {
-    flex: 1 1 30%;
-    padding: 1rem;
-    background-color: var(--white);
-    border-radius: 10px;
-    transition: transform 0.3s ease;
-  }
-  
-  .team-member:hover {
-    transform: translateY(-10px);
-  }
-  
-  .team-member img {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    margin-bottom: 1rem;
-  }
-  
-  .team-member h3 {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-  }
-  
-  .team-member p {
-    font-size: 1rem;
-    color: #666;
-  }
+  padding: 4rem 0;
+  background-color: var(--background-color);
+  text-align: center;
+}
+.about-us-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+}
+
+.about-us-section p {
+  max-width: 800px;
+  margin: 0 auto 2rem;
+  font-size: 1.1rem;
+  color: var(--gray-color);
+}
+
+.team-grid {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.team-member {
+  flex: 1 1 30%;
+  padding: 1rem;
+  background-color: var(--white);
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.team-member:hover {
+  transform: translateY(-10px);
+}
+
+.team-member img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+}
+
+.team-member h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--primary-color);
+}
+
+.team-member p {
+  font-size: 1rem;
+  color: var(--gray-color);
+}

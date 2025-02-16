@@ -1,4 +1,4 @@
-/* FeaturesSection.css */
+/* Features Section Styles */
 .features-section {
   padding: 4rem 0;
   background-color: var(--white);
@@ -32,9 +32,10 @@
 .feature-card h3 {
   font-size: 1.5rem;
   margin-bottom: 1rem;
+  color: var(--primary-color);
 }
 
 .feature-card p {
   font-size: 1rem;
-  color: #666;
+  color: var(--gray-color);
 }

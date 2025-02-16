@@ -1,44 +1,4 @@
-:root {
-  --primary-color: #3498db;
-  --secondary-color: #2ecc71;
-  --text-color: #333;
-  --background-color: #f9f9f9;
-  --white: #fff;
-  --black: #000;
-  --box-shadow-color: rgba(0, 0, 0, 0.1);
-  --dropzone-hover-bg-color: #f0f0f0;
-  --error-color: #ff4d4d;
-  --success-color: #2ecc71;
-  --gray-color: #666;
-  --light-gray-color: #ccc;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: 'Arial', sans-serif;
-  color: var(--text-color);
-  background-color: var(--background-color);
-  line-height: 1.6;
-}
-
-h1, h2, h3 {
-  color: var(--black);
-}
-
-a {
-  text-decoration: none;
-  color: var(--primary-color);
-}
-
-a:hover {
-  color: var(--secondary-color);
-}
-
+/* Use Section Styles */
 .container {
   display: flex;
   justify-content: space-between;
@@ -232,5 +192,5 @@ a:hover {
 }
 
 .input-container button:hover {
-  background-color: #2980b9;
+  background-color: var(--primary-hover-color);
 }

@@ -7,6 +7,12 @@ from sentence_transformers import SentenceTransformer
 from pinecone import Pinecone, ServerlessSpec
 import numpy as np
 import logging
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO,  # Set the log level to INFO
+    format="%(asctime)s - %(levelname)s - %(message)s",  # Log format
+    handlers=[logging.StreamHandler()]  # Print logs to the console
+)
 
 from app.models.schemas import QuestionRequest
 from app.services.text_extractor import extract_text
@@ -96,41 +102,103 @@ async def create_session():
 @api_router.post("/uploadPdf/{session_id}")
 async def upload_pdfs(session_id: str, files: List[UploadFile] = File(...)):
     try:
+        # Log the number of files received
+        logging.info(f"Received {len(files)} files for session {session_id}")
+
         # Get or create the session index
         index = pc.Index(session_id)
         processed_files = []
 
         for file in files:
-            content = await file.read()
-            file_extension = os.path.splitext(file.filename)[1]
-            text = await extract_text(content, file_extension)
-            
-            
-            # Chunk the text
-            chunks = chunk_text(text)
-            
-            # Vectorize chunks
-            vectors = vectorize_chunks(chunks)
-            
-            # Prepare vectors for Pinecone
-            vectors_to_upsert = []
-            for idx, (chunk, vector) in enumerate(zip(chunks, vectors)):
-                vector_id = f"{file.filename}-chunk{idx}"
-                vectors_to_upsert.append((vector_id, vector.tolist(), {
+            try:
+                # Log the current file being processed
+                logging.info(f"Processing file: {file.filename}")
+
+                # Read file content
+                content = await file.read()
+                if not content:
+                    logging.warning(f"File {file.filename} is empty")
+                    processed_files.append({
+                        "filename": file.filename,
+                        "chunks_processed": 0,
+                        "message": "File is empty"
+                    })
+                    continue  # Skip to the next file
+
+                # Extract file extension
+                file_extension = os.path.splitext(file.filename)[1]
+                if file_extension.lower() != ".pdf":
+                    logging.warning(f"File {file.filename} is not a PDF")
+                    processed_files.append({
+                        "filename": file.filename,
+                        "chunks_processed": 0,
+                        "message": "File is not a PDF"
+                    })
+                    continue  # Skip to the next file
+
+                # Extract text from the file
+                text = await extract_text(content, file_extension)
+                if not text:
+                    logging.warning(f"No text extracted from file {file.filename}")
+                    processed_files.append({
+                        "filename": file.filename,
+                        "chunks_processed": 0,
+                        "message": "No text extracted"
+                    })
+                    continue  # Skip to the next file
+
+                # Chunk the text
+                chunks = chunk_text(text)
+                if not chunks:
+                    logging.warning(f"No chunks created for file {file.filename}")
+                    processed_files.append({
+                        "filename": file.filename,
+                        "chunks_processed": 0,
+                        "message": "No chunks created"
+                    })
+                    continue  # Skip to the next file
+
+                # Vectorize chunks
+                vectors = vectorize_chunks(chunks)
+                if not vectors:
+                    logging.warning(f"No vectors generated for file {file.filename}")
+                    processed_files.append({
+                        "filename": file.filename,
+                        "chunks_processed": 0,
+                        "message": "No vectors generated"
+                    })
+                    continue  # Skip to the next file
+
+                # Prepare vectors for Pinecone
+                vectors_to_upsert = []
+                for idx, (chunk, vector) in enumerate(zip(chunks, vectors)):
+                    vector_id = f"{file.filename}-chunk{idx}"
+                    vectors_to_upsert.append((vector_id, vector.tolist(), {
+                        "filename": file.filename,
+                        "chunk_index": idx,
+                        "chunk_text": chunk  # Store the chunk text in metadata for context
+                    }))
+
+                # Batch upsert vectors to session-specific index
+                index.upsert(vectors=vectors_to_upsert)
+
+                # Log success
+                logging.info(f"Successfully processed file {file.filename} with {len(chunks)} chunks")
+                processed_files.append({
                     "filename": file.filename,
-                    "chunk_index": idx,
-                    "chunk_text": chunk  # Store the chunk text in metadata for context
-                }))
-            
-            # Batch upsert vectors to session-specific index
-            index.upsert(vectors=vectors_to_upsert)
-            
-            processed_files.append({
-                "filename": file.filename,
-                "chunks_processed": len(chunks),
-                "message": "PDF processed and vectors stored successfully"
-            })
-            
+                    "chunks_processed": len(chunks),
+                    "message": "PDF processed and vectors stored successfully"
+                })
+
+            except Exception as e:
+                logging.error(f"Error processing file {file.filename}: {str(e)}")
+                processed_files.append({
+                    "filename": file.filename,
+                    "chunks_processed": 0,
+                    "message": f"Error processing file: {str(e)}"
+                })
+                continue  # Continue processing the next file
+
     except Exception as e:
         logging.error(f"Error processing files for session {session_id}: {str(e)}")
         raise HTTPException(status_code=500, detail=f"Error processing files: {str(e)}")
@@ -140,6 +208,7 @@ async def upload_pdfs(session_id: str, files: List[UploadFile] = File(...)):
         "session_id": session_id,
         "processed_files": processed_files
     }
+
 
 @api_router.post("/askQuestion/{session_id}")
 async def ask_question(session_id: str, request: QuestionRequest):
@@ -206,3 +275,45 @@ async def delete_session(session_id: str):
     except Exception as e:
         logging.error(f"Error deleting session {session_id}: {str(e)}")
         raise HTTPException(status_code=500, detail=f"Error deleting session: {str(e)}")
+    
+ 
+
+@api_router.delete("/delete-pdf/{session_id}/{pdf_name}") 
+async def delete_pdf(session_id: str, pdf_name: str):
+    try:
+        # Get the session-specific index
+        index = pc.Index(session_id)
+
+        # Use a dummy vector of the correct dimension (384 in this case)
+        dummy_vector = [0] * 384  # Replace 384 with the actual dimension of your index
+
+        # Query the index to find vectors associated with the PDF
+        query_results = index.query(
+            vector=dummy_vector,  # Use the correct dimension
+            top_k=1000,  # Adjust based on the expected number of chunks
+            include_metadata=True,
+            filter={
+                "filename": {"$eq": pdf_name}
+            }
+        )
+
+        # Extract vector IDs to delete
+        vector_ids_to_delete = [match.id for match in query_results.matches]
+
+        # If no vectors are found, return an error
+        if not vector_ids_to_delete:
+            raise HTTPException(status_code=404, detail=f"No PDF found with name '{pdf_name}' in session '{session_id}'")
+
+        # Delete the vectors from the index
+        index.delete(ids=vector_ids_to_delete)
+
+        return {
+            "status": "success",
+            "session_id": session_id,
+            "pdf_name": pdf_name,
+            "deleted_vectors": len(vector_ids_to_delete),
+            "message": f"PDF '{pdf_name}' and its associated vectors deleted successfully"
+        }
+
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error deleting PDF: {str(e)}")

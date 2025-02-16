@@ -1,116 +1,78 @@
-/* General Styling */
+/* Hero Section Styles */
 .hero {
-    background-color: whitesmoke;
-    color: #fff;
-    /* text-align: center; */
-    color: #0f2b25;
-    padding: 100px 20px; 
-  }
-  
-  .hero-container {
-    max-width: 900px;
-    margin: 0 auto;
-  }
-  
-  .title {
-    font-size: 2.5rem; 
-    left: 0;
-    font-weight: bold;
-    margin-bottom: 20px;
-  }
-  /* Title Styling */
+  background-color: var(--background-color);
+  color: var(--text-color);
+  padding: 100px 20px; 
+}
+
+.hero-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.hero-title {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: var(--primary-color);
+}
+
+.hero-subtitle {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.btn {
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 12px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  border: none;
+}
+
+.primary-btn {
+  background-color: var(--primary-color);
+  color: var(--white);
+}
+
+.primary-btn:hover {
+  background-color: var(--primary-hover-color);
+}
+
+.secondary-btn {
+  background-color: transparent;
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
+}
+
+.secondary-btn:hover {
+  background-color: var(--primary-color);
+  color: var(--white);
+}
+
+@media (max-width: 768px) {
   .hero-title {
-    font-size: 3rem;
-    font-weight: bold;
-    margin-bottom: 20px;
+    font-size: 2.5rem;
   }
-  
-  /* Subtitle Styling */
+
   .hero-subtitle {
-    font-size: 1.2rem;
-    line-height: 1.6;
-    margin-bottom: 30px; 
+    font-size: 1rem;
   }
-  
-  /* Buttons Styling */
+
   .hero-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
+    flex-direction: column;
   }
-  
+
   .btn {
-    font-size: 1rem;
-    font-weight: bold;
-    padding: 12px 20px;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-    border: none;
+    width: 100%;
   }
-  
-  .primary-btn {
-    background-color: blue;
-    color: white;
-  }
-  
-  .primary-btn:hover {
-    background-color: green;
-  }
-  
-  .secondary-btn {
-    background-color: transparent; 
-    border: 2px solid white;
-  }
-  
-  .secondary-btn:hover {
-    background-color: blue;
-    color: whitesmoke;
-  }
-  
-  /* Footer Section */
-  .hero-footer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    margin-top: 30px;
-  }
-  
-  /* Avatar Group */
-  .avatar-group {
-    display: flex;
-  }
-  
-  .avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    margin-right: -10px;
-    border: 2px solid #0f2b25;
-  }
-  
-  .hero-loves {
-    font-size: 1rem;
-    color: #d1d5db;
-  }
-  
-  /* Responsive Styling */
-  @media (max-width: 768px) {
-    .hero-title {
-      font-size: 2.5rem;
-    }
-  
-    .hero-subtitle {
-      font-size: 1rem;
-    }
-  
-    .hero-buttons {
-      flex-direction: column;
-    }
-  
-    .btn {
-      width: 100%;
-    }
-  }
-  
+}
